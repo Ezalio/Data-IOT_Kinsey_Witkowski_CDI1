@@ -1,0 +1,538 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+}
+
+/* MENU */
+.sidebar {
+  width: 0;
+  display: flex;
+  top: 0px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar a {
+  color: black;
+  line-height: 1;
+  display: inline-block;
+  font-size: 18px;
+  padding: 18px 24px;
+  text-decoration: none;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  background-color: steelblue;
+  color: white;
+}
+
+.sidebar img {
+  height: 50px;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+#xbtn,
+.openbtn {
+  display: none;
+}
+
+header {
+  transition: margin-left 0.5s;
+  background-color: black;
+}
+
+/* FONTS */
+h3 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+.collection {
+  background-image: url(images/Hogwarts-Logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  border-top: solid 3px black;
+  border-bottom: solid 3px black;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* FILTER */
+.filter {
+  margin-bottom: 20px;
+}
+
+.filter button {
+  font-size: medium;
+  background-color: lightslategray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter button[data-house="gryffindor"] {
+  background-color: #ae0001;
+}
+
+.filter button[data-house="hufflepuff"] {
+  background-color: #ecb939;
+}
+
+.filter button[data-house="ravenclaw"] {
+  background-color: #222f5b;
+}
+
+.filter button[data-house="slytherin"] {
+  background-color: #2a623d;
+}
+
+.filter button:hover {
+  background-color: steelblue;
+}
+
+/* SEARCH BAR */
+#search-input {
+  width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 3px solid lightslategray;
+  border-radius: 5px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#search-input:focus {
+  border-color: steelblue;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  height: 270px;
+  width: 180px;
+  margin: 10px 15px;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 5px;
+  border: solid 3.5px;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  border: solid 2px;
+}
+
+.card,
+.card img,
+.card a {
+  background-color: lightgrey;
+  border-color: black;
+  color: black;
+}
+
+.card[data-house="gryffindor"],
+.card[data-house="gryffindor"] img,
+.card[data-house="gryffindor"] a {
+  background-color: #ae0001;
+  border-color: #eeba30;
+  color: lightgray;
+}
+
+.card[data-house="hufflepuff"],
+.card[data-house="hufflepuff"] img,
+.card[data-house="hufflepuff"] a {
+  background-color: #ecb939;
+  border-color: #000000;
+  color: black;
+}
+
+.card[data-house="slytherin"],
+.card[data-house="slytherin"] img,
+.card[data-house="slytherin"] a {
+  background-color: #2a623d;
+  border-color: #aaaaaa;
+  color: lightgray;
+}
+
+.card[data-house="ravenclaw"],
+.card[data-house="ravenclaw"] img,
+.card[data-house="ravenclaw"] a {
+  background-color: #5d5d5d;
+  border-color: #222f5b;
+  color: lightgray;
+}
+
+.card button {
+  /*button fav */
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05,1.05);
+}
+
+/* BUTTON TRADE */
+.floating-btn {
+  font-size: large;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: lightslategray;
+  color: white;
+  border: solid 2px black;
+  border-radius: 5em;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.floating-btn:hover {
+  background-color: steelblue;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: lightgrey;
+  padding: 30px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content select {
+  margin-right: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/*PAGE INFO CARTE*/
+#character-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-top: solid black 3px;
+
+  background-size: cover;
+}
+
+#character-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: solid 3px black;
+  border-radius: 3rem;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+  margin: 5vw 7vw;
+  padding: 5vw 15vw;
+}
+
+#character-details h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 40px;
+}
+
+#character-details img {
+  margin: 20px;
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  object-position: top;
+  border: solid 5px;
+}
+
+#character-details p {
+  font-size: large;
+}
+
+#character-details div p {
+  text-align: left;
+}
+
+#character-details div p span {
+  display: inline-block;
+  width: 100px;
+}
+
+/* Style en fonction de la maison */
+#character-page.gryffindor #character-details,
+#character-page.gryffindor #character-details img {
+  background-color: #ae0001;
+  border-color: #eeba30;
+  color: white;
+}
+
+#character-page.hufflepuff #character-details,
+#character-page.hufflepuff #character-details img {
+  background-color: #ecb939;
+  border-color: black;
+  color: black;
+}
+
+#character-page.slytherin #character-details,
+#character-page.slytherin #character-details img {
+  background-color: #2a623d;
+  border-color: #aaaaaa;
+  color: white;
+}
+
+#character-page.ravenclaw #character-details,
+#character-page.ravenclaw #character-details img {
+  background-color: #5d5d5d;
+  border-color: #222f5b;
+  color: white;
+}
+
+/*HOMEPAGE*/
+#home {
+  border-top: solid 3px black;
+  background-color: maroon;
+}
+
+#home .text-over-image {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+#home .text-over-image img {
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+#home .text-over-image h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6vw;
+}
+
+.intro {
+  background-color: whitesmoke;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  margin: 20px;
+}
+
+#home h3 {
+  margin: 4vw 10vw;
+}
+
+#home .line-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: solid black 3px;
+  height: 350px;
+}
+
+#home .line-block a {
+  font-size: larger;
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+#home a:hover {
+  font-size: x-large;
+}
+
+#home .line-block img {
+  height: 100%;
+  max-width: 100%;
+}
+
+/* MENU SIDENAV */
+@media screen and (max-width: 1000px) {
+  .openbtn,
+  #xbtn {
+    display: block;
+  }
+
+  .sidebar {
+    display: block;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    color: steelblue;
+    background-color: white;
+  }
+
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+
+  .openbtn:hover {
+    background-color: gray;
+  }
+
+  .collection,
+  #character-page {
+    border-top: none;
+  }
+
+  #home .line-block {
+    flex-direction: column;
+    margin: 2vw 0px;
+  }
+
+  #home .line-block a {
+    padding: 4vw;
+  }
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+
+.form-container button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0px;
+  background-color: lightslategray;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: steelblue;
+}
+
+.profile-info {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.profile-info h2 {
+  margin-bottom: 20px;
+}

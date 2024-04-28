@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Header / Side Bar -->
+    <div id="mySidebar" class="sidebar">
+      <a
+        href="javascript:void(0)"
+        id="xbtn"
+        class="closebtn"
+        onclick="closeNav()"
+        >&times;</a
+      >
+      <img src="images/logo hp.png" alt="Logo Harry Potter" />
+      <a href="index.html">Home</a>
+      <a href="collection.html">Collection</a>
+      <a href="login.html">Login</a>
+    </div>
+
+    <header>
+      <button class="openbtn" onclick="openNav()">☰</button>
+    </header>
+
+    <div class="form-container">
+      <form id="login-form">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email" required />
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="signup-form">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username" />
+        <input type="email" id="signup-email" placeholder="Email" required />
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    <script src="js/submit.js"></script>
+    <script src="js/side-nav.js"></script>
+  </body>
+</html>
